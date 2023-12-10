@@ -1,9 +1,13 @@
 import requests
-import smtplib
 from bs4 import BeautifulSoup
 
 
-def check_url(url, headers):
+def check_url(url):
+    """
+    url: the path to results of MiLoto in the web
+    """
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)\
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'}
     page = requests.get(url, headers=headers)
     status_code = page.status_code
 
@@ -18,21 +22,13 @@ def check_url(url, headers):
         # Extraer los números dentro de <div class="yellow-ball">
         numeros = [numero.text.strip() for numero in soup.find_all('div', class_='yellow-ball')]
 
-        # Imprimir los resultados
-        print(f"Número de Sorteo: {numero_sorteo}")
-        print(f"Fecha: {fecha}")
-        print(f"Números: {', '.join(numeros)}")
+    else:
+        numero_sorteo = None
+        fecha = None
+        numeros = None
 
+    return (status_code, numero_sorteo, fecha, numeros)
 
-    return status_code
-
-
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36'}
-url = 'https://baloto.com/miloto/resultados-miloto/'
-sorteo = '1'
-url_full = url + sorteo
-
-check_url(url_full, headers)
 
 
 
