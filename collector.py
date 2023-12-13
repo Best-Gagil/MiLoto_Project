@@ -18,14 +18,11 @@ def execute_sql(sql_command, parameters=()):
     """
     try:
         conn = sqlite3.connect(database_name)
-        cursor = conn.cursor()
-        
+        cursor = conn.cursor()      
         # Execute the SQL command alone or with parameters
-        cursor.execute(sql_command, parameters)
-        
+        cursor.execute(sql_command, parameters)      
         # Fetch results if any
-        resultados = cursor.fetchall()
-        
+        resultados = cursor.fetchall()      
         cursor.close()
         conn.commit()  # Don't forget to commit changes
         conn.close()
