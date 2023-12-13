@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd 
 
+
 # vamos a cargar la base de datos a Pandas
 def cargar_a_dataframe(database_name='miloto.db', table_name='sorteos'):
     try:
