@@ -15,9 +15,10 @@ def cargar_a_dataframe(database_name='miloto.db', table_name='sorteos'):
         return None
 
 
-# Llamada a la función
-df = cargar_a_dataframe()
-df.set_index('numero_sorteo', inplace=True)
-df[['n1', 'n2', 'n3', 'n4', 'n5']] = df['numeros_ganadores'].str.split(',', expand=True)
-df.drop(columns=['numeros_ganadores'], inplace=True)
-print(df)
+if __name__ == '__main__':
+
+    df = cargar_a_dataframe()
+    df.set_index('numero_sorteo', inplace=True)
+    df[['n1', 'n2', 'n3', 'n4', 'n5']] = df['numeros_ganadores'].str.split(',', expand=True)
+    df.drop(columns=['numeros_ganadores'], inplace=True)
+    print(df)
