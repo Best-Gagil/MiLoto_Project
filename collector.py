@@ -20,7 +20,7 @@ def execute_sql(sql_command, parameters=()):
         conn = sqlite3.connect(database_name)
         cursor = conn.cursor()      
         # Execute the SQL command alone or with parameters
-        cursor.execute(sql_command, parameters)      
+        cursor.execute(sql_command, parameters)
         # Fetch results if any
         resultados = cursor.fetchall()      
         cursor.close()
