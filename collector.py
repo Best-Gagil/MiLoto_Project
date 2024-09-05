@@ -4,6 +4,7 @@ import os
 from miloto_scraper import check_url 
 from datetime import datetime
 
+
 # Set the locale to Spanish
 locale.setlocale(locale.LC_TIME, 'es_ES')
 
